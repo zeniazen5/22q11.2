@@ -6,4 +6,6 @@ Two packages were used:
 1. MiloR 
 2. CellChat 
 
+The folders shown within the code script refer to my local folders. 
+
 
