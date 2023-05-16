@@ -24,7 +24,7 @@ library(RANN)
 ## Part 1##
 
 # define path
-data_path <- "/proj/snic2022-6-148/SCZ_mice_sc/results/Milo/all.loom"
+data_path <- "the paths for your file"
 # load seurat object
 data <- Connect(data_path) 
 gaba_seurat <- as.Seurat(data, features = "var_names", cells = "obs_names")
@@ -38,15 +38,15 @@ gaba_seurat <- RunUMAP(gaba_seurat, dims = 1:30 , reduction = "pca", assay= SCT)
 gaba_seurat<- RunTSNE(gaba_seurat)
 
 #UMAP coloured by different slots from meta data
-pdf("/proj/snic2022-6-148/SCZ_mice_sc/results/Milo/UMAP_level4.pdf")
+pdf("/results/Milo/UMAP_level4.pdf")
 DimPlot(gaba_seurat, reduction = "umap", group.by = "level_4", label = TRUE)
 dev.off()
 
-pdf("/proj/snic2022-6-148/SCZ_mice_sc/results/Milo/UMAP_mutation_status.pdf")
+pdf("results/Milo/UMAP_mutation_status.pdf")
 DimPlot(gaba_seurat, reduction = "umap", group.by = "mutation_status")
 dev.off()
 
-pdf("/proj/snic2022-6-148/SCZ_mice_sc/results/Milo/UMAP_sex.pdf")
+pdf("/results/Milo/UMAP_sex.pdf")
 DimPlot(gaba_seurat, reduction = "umap", group.by = "sex")
 dev.off()
 
@@ -96,7 +96,7 @@ gaba_milo <- buildGraph(gaba_milo, k =60, d = 30, reduced.dim = "PCA" ) #k>=45
 gaba_milo <- makeNhoods(gaba_milo, prop = 0.05, k = 60 , d=30, refined = TRUE, reduced_dims = "PCA" )
 
 
-pdf("/proj/snic2022-6-148/SCZ_mice_sc/results/Milo/NhoodSizeHist.pdf")
+pdf("/results/Milo/NhoodSizeHist.pdf")
 plotNhoodSizeHist(gaba_milo)  
 dev.off()
 
@@ -147,13 +147,13 @@ da_results_gaba %>%
 
 #We first inspect the distribution of uncorrected P values, to verify that the test was balanced.
 
-pdf("/proj/snic2022-6-148/SCZ_mice_sc/results/Milo/Pvalue.pdf")
+pdf("/results/Milo/Pvalue.pdf")
 ggplot(da_results_gaba, aes(PValue)) + geom_histogram(bins=50) #In R, the aes() function is often used within other graphing elements to specify the desired aesthetics. 
 dev.off()
 
 #Then we visualize the test results with a volcano plot (remember that each point here represents a neighbourhood, not a cell).
 
-pdf("/proj/snic2022-6-148/SCZ_mice_sc/results/Milo/spatialfdr.pdf")
+pdf("/results/Milo/spatialfdr.pdf")
 ggplot(da_results_gaba, aes(logFC, -log10(SpatialFDR))) + 
   geom_point() +
   geom_hline(yintercept = 1) ## Mark significance threshold (10% FDR)
@@ -168,13 +168,13 @@ gaba_milo <- buildNhoodGraph(gaba_milo)
 #Plot Nhood grpah coloured by LogFC values 
 nh_graph_pl_fdr <- plotNhoodGraphDA(gaba_milo, da_results_gaba,alpha=0.05, layout= "UMAP")
 
-pdf("/proj/snic2022-6-148/SCZ_mice_sc/results/Milo/umap_da_plot.pdf")
+pdf("/results/Milo/umap_da_plot.pdf")
 umap_plot_seurat + nh_graph_pl_fdr +
   plot_layout(guides="collect")
 dev.off()
 
 
-pdf("/proj/snic2022-6-148/SCZ_mice_sc/results/Milo/MANeigh.pdf")
+pdf("/results/Milo/MANeigh.pdf")
 plotNhoodMA(da_results_gaba,alpha=0.05)
 dev.off()
 
@@ -186,14 +186,14 @@ head(da_results_gaba)
 
 #While neighbourhoods tend to be homogeneous, we can define a threshold
 #for celltype_fraction to exclude neighbourhoods that are a mix of cell types.
-pdf("/proj/snic2022-6-148/SCZ_mice_sc/results/Milo/level4fraction.pdf")
+pdf("/results/Milo/level4fraction.pdf")
 ggplot(da_results_gaba, aes(level_4_fraction)) + geom_histogram(bins=50)
 dev.off()
 
 
 #Now we can visualize the distribution of DA Fold Changes in different cell types
 
-pdf("/proj/snic2022-6-148/SCZ_mice_sc/results/Milo/DAbeeswarm.pdf")
+pdf("/Milo/DAbeeswarm.pdf")
 plotDAbeeswarm(da_results_gaba, group.by ="level_4", alpha = 0.05)
 dev.off()
 
