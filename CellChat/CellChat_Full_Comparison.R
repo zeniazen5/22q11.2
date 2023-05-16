@@ -24,7 +24,7 @@ options(stringsAsFactors = FALSE)
 
  
 #Load seurat 
-setwd("/proj/snic2022-6-148/SCZ_mice_sc/results/SCtransform")
+setwd("/results/SCtransform")
 gaba_no<- LoadH5Seurat("Seurat_Full.h5seurat")
 
 
@@ -33,7 +33,7 @@ gaba_seurat <- NormalizeData(gaba_no, scale.factor = 10000 , normalization.metho
 
 
 #Save the Log Normalize seurat 
-setwd("/proj/snic2022-6-148/SCZ_mice_sc/results/CellChat")
+setwd("/CellChat")
 SaveH5Seurat(gaba_seurat, "Full_Log.h5Seurat")
 
 #Make mean variance plot to check how your data look normalized
@@ -46,7 +46,7 @@ gene_attr$log_mean <- log10(gene_attr$mean)
 
 #Save the plot 
 
-png("/proj/snic2022-6-148/SCZ_mice_sc/results/CellChat/mean_variance.png")
+png("results/CellChat/mean_variance.png")
 ggplot( gene_attr, aes( log_mean,var )) + geom_point() +labs(x= "Log-mean of log_normalized data", y= "Variance of log_normalized data", title = "Mean-Variance plot") +
   theme_classic()
 dev.off()
@@ -60,7 +60,7 @@ gaba_seurat2 <- subset(gaba_seurat, idents = c("wildtype"))
 unique(gaba_seurat2@meta.data[["mutation_status"]])
 
 #Save the wildtype seurat file
-setwd("/proj/snic2022-6-148/SCZ_mice_sc/results/CellChat")
+setwd("/results/CellChat")
 SaveH5Seurat(gaba_seurat2, "Full_Log_wildtype.h5Seurat")
 
 #CellChat 
@@ -95,7 +95,7 @@ cellchat@DB <- CellChatDB.use
 
 #Save the cell chat object
 
-setwd("/proj/snic2022-6-148/SCZ_mice_sc/results/CellChat")
+setwd("/results/CellChat")
 
 saveRDS(cellchat, file = "CellChat_Full_beforeOEG_log_wildtype.rds")
 
@@ -107,7 +107,7 @@ cellchat <- identifyOverExpressedGenes(cellchat)
 cellchat <- identifyOverExpressedInteractions(cellchat)
 
 #Save the object after identification of overexpressed genes
-setwd("/proj/snic2022-6-148/SCZ_mice_sc/results/CellChat")
+setwd("/results/CellChat")
 
 saveRDS(cellchat, file = "CellChat_Full_afterOEG_log_wildtype.rds")
 
@@ -135,15 +135,15 @@ cellchat <- computeCommunProbPathway(cellchat)
 
 #Save Cell chat 
 
-setwd("/proj/snic2022-6-148/SCZ_mice_sc/results/CellChat")
+setwd("/results/CellChat")
 
 saveRDS(cellchat, file = "CellChat_Full_Analysis_log_wildtype.rds")
 
 #Export dataframe in Excel with all the LR pairs and signalling pathways 
 library("writexl")
-write_xlsx(Net,"/proj/snic2022-6-148/SCZ_mice_sc/results/CellChat/Net_Full_wildtype.xlsx")
+write_xlsx(Net,"/results/CellChat/Net_Full_wildtype.xlsx")
 
-write_xlsx(NetP,"/proj/snic2022-6-148/SCZ_mice_sc/results/CellChat/NetP_Full_wildtype.xlsx")
+write_xlsx(NetP,"/results/CellChat/NetP_Full_wildtype.xlsx")
 
 ########----------- CELL CHAT ANALYSIS FOR MUTANT--------#########
 rm(cellchat)
@@ -154,7 +154,7 @@ gaba_seurat3 <- subset(gaba_seurat, idents = c("mutant"))
 
 unique(gaba_seurat3@meta.data[["mutation_status"]])
 
-setwd("/proj/snic2022-6-148/SCZ_mice_sc/results/CellChat")
+setwd("/results/CellChat")
 SaveH5Seurat(gaba_seurat3, "Full_Log_mutant.h5Seurat")
 
 #CellChat 
@@ -186,7 +186,7 @@ CellChatDB.use <- CellChatDB # simply use the default CellChatDB, you can also u
 cellchat@DB <- CellChatDB.use
 
 
-setwd("/proj/snic2022-6-148/SCZ_mice_sc/results/CellChat")
+setwd("/results/CellChat")
 
 saveRDS(cellchat, file = "CellChat_Full_beforeOEG_log_mutant.rds")
 
@@ -196,7 +196,7 @@ cellchat <- subsetData(cellchat) # This step is necessary even if using the whol
 cellchat <- identifyOverExpressedGenes(cellchat)
 cellchat <- identifyOverExpressedInteractions(cellchat)
 
-setwd("/proj/snic2022-6-148/SCZ_mice_sc/results/CellChat")
+setwd("/results/CellChat")
 
 saveRDS(cellchat, file = "CellChat_Full_afterOEG_log_mutant.rds")
 
@@ -219,15 +219,15 @@ cellchat <- computeCommunProbPathway(cellchat)
 
 #Save Cell chat 
 
-setwd("/proj/snic2022-6-148/SCZ_mice_sc/results/CellChat")
+setwd("/results/CellChat")
 
 saveRDS(cellchat, file = "CellChat_Full_Analysis_log_mutant.rds")
 
 #Export dataframe in Excel 
 library("writexl")
-write_xlsx(Net,"/proj/snic2022-6-148/SCZ_mice_sc/results/CellChat/Net_Full_mutant.xlsx")
+write_xlsx(Net,"/results/CellChat/Net_Full_mutant.xlsx")
 
-write_xlsx(NetP,"/proj/snic2022-6-148/SCZ_mice_sc/results/CellChat/NetP_Full_mutant.xlsx")
+write_xlsx(NetP,"/results/CellChat/NetP_Full_mutant.xlsx")
 
 
 
