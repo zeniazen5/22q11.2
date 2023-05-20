@@ -1,6 +1,6 @@
-#Milo in fulldataset 22q11.2
-# Zenia 7/11/22 
-
+#Title: MiloR analysis in scRNA seq data 
+#Author: Evgenia Ntaouka 
+#Date: 10/5/2023
 
 
 #Loading libraries
