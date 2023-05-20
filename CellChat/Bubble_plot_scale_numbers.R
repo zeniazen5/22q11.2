@@ -1,3 +1,7 @@
+#Title : Bubble plot from CellChat with numbers on the scale 
+#Author : CellChat developers and Evgenia Ntaouka 
+#Date: 10/5/2023
+
 net <- function (object, sources.use = NULL, targets.use = NULL, signaling = NULL, 
           pairLR.use = NULL, color.heatmap = c("Spectral", "viridis"), 
           n.colors = 10, direction = -1, thresh = 0.05, comparison = NULL, 
