@@ -6,7 +6,7 @@
  </p> 
  
  A graphical abstract of the tools were used is shown in Figure 1.
- ![MiloR and CellChat](/[https://github.com/zeniazen5/22q11.2/blob/main/2023-05-20%20(2).png] "MiloR and CellChat")
+ ![MiloR and CellChat](/[2023-05-20 (2).png] "MiloR and CellChat")
 
 
 scRNAseq downstream analysis from PFC of 22q11.2 heterozygous and wildtype mice. 
