@@ -1,6 +1,6 @@
-#DA with MiloR in Vessel wall cells 
-# Zenia 7/11/22 
-
+#Title: MiloR analysis in scRNA seq data from vessel wall cells
+#Author: Evgenia Ntaouka 
+#Date: 10/5/2023
 
 
 #Loading the libraries
