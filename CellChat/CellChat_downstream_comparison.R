@@ -1,5 +1,6 @@
-#Cell Chat comparing 2 conditions 
-#21.10.22
+#Title: Cell Chat comparing 2 conditions 
+#Author : Evgenia Ntaouka 
+#Date: 10/5/2023
 
 library(CellChat)
 library(patchwork)
