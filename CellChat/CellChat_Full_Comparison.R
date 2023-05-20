@@ -1,5 +1,7 @@
-#CellChat analysis is LogTransform data Wt vs MT 
-#7/3/2023
+
+#Title: CellChat analysis is LogTransform data Wt vs MT 
+#Author : Evgenia Ntaouka 
+#Date: 10/5/2023
 
 library(SeuratDisk)
 library(Seurat)
