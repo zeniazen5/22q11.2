@@ -1,3 +1,10 @@
+
+#Title: ComplexHeatmap for cell cell communication patterns
+#Author: CellChat developers and Evgenia Ntaouka 
+# I added some small changes to be able to include the cells that i wanted with a specific order in the heatmap. 
+#Date: 10/5/2023
+
+
 netVisual_heatmap2 <- function(object, comparison = c(1,2), measure = c("count", "weight"), signaling = NULL, slot.name = c("netP", "net"), color.use = NULL, color.heatmap = c("#2166ac","#b2182b"),
                               title.name = NULL, width = NULL, height = NULL, font.size = 8, font.size.title = 10, cluster.rows = FALSE, cluster.cols = FALSE,
                               sources.use = NULL, targets.use = NULL, remove.isolate = FALSE, row.show = NULL, col.show = NULL){
